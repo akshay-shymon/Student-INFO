@@ -1,0 +1,31 @@
+<?php
+include("config.php");
+if(isset($_POST["btnSave"]))
+	{
+		$father_name=$_POST["txtfathername"];
+		$father_job=$_POST["txtfatherjob"];
+		$mother_name=$_POST["txtmothername"];
+		$mother_jobe=$_POST["txtmotherjob"];
+		$guardin_name=$_POST["txtguardian"];
+		$guardin_guali=$_POST["txtqualification"];
+		$guardin_job=$_POST["txtguardianjobe"];
+		$guardin_relation=$_POST["txtrelation"];
+		$schoolname10=$_POST["txtschoolname10"];
+		$school10result=$_POST["txt10result"];
+		$school10reg=$_POST["txtregno10"];
+		$schoolname=$_POST["txtschoolname+2"];
+		$schoolresult=$_POST["txt+2result"];
+		$schoolregno=$_POST["txtregno+2"];
+		$location=$_POST["txtlocation"];
+		$bgroup=$_POST["txtbgroup"];
+		$religion=$_POST["txtreligion"];
+		$course_id=$_POST["username"];
+		$genter_id=$_POST["txtgenter"];
+		$res=mysqli_query($con,"INSERT INTO tbl_stu_all_details(Father_name, Father_job,Mother_name,Mother_job,Guardian_name,Qualification,Guardian_job,Relation,10th_reg_no,10th_result,10th_school,12th_reg_no,12th_result,12th_school,location_id,b_id,Religion_id,student_id,genter_id)VALUES('$father_name', '$father_job','$mother_name','$mother_jobe','$guardin_name','$guardin_guali','$guardin_job','$guardin_relation','$school10reg','$school10result','$schoolname10','$schoolregno','$schoolresult','$schoolname','$location','$bgroup','$religion','$course_id','$genter_id')");
+		if($res)
+		{
+			echo "<script>alert('inserted');window.location='index.html';</script>";
+		}else
+		echo"faillllll";
+	}
+?>

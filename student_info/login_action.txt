@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+<?php
+session_start();
+include("config.php");
+if(isset($_POST['submit']))
+{
+	$username=$_POST["email"];
+	$password=$_POST["password"];
+
+     $check=mysqli_query($con,"select count(*) from tbl_login where username='$username' && password='$password'");
+	 $row=mysqli_fetch_array($check);
+	 
+	 
+	 $check1=mysqli_query($con,"select count(*) from adminlogin where username='$username' && password='$password'");
+	 $row1=mysqli_fetch_array($check1);
+	 
+
+	 
+if($row[0]==1)
+{ 
+
+  $_SESSION["username"]=$username;
+  echo "<script>alert('login sucessfully');window.location='../student1/index.html';</script>";
+  
+
+}
+elseif($row1[0]==1)
+{ 
+  echo "<script>alert('login sucessfully as admin');window.location='../admin/index.html';</script>";
+ }
+else
+echo "<script>alert('Inavlid username/password');window.location='index.html';</script>";
+}
+?>
+</body>
+</html>
